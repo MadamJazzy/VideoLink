@@ -20,7 +20,7 @@ module.exports = class VideoLink extends Plugin {
                 let channelID = Number(input);
                 const channel = getChannel(channelID);
                 if (channel.guild_id) {
-                    const guild = getGuild(channelID.guild_id);
+                    const guild = getGuild(channel.guild_id);
                     return {
                         send: false,
                         result: ('https://canary.discordapp.com/' + guild + "/" + channelID)

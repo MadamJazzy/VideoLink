@@ -8,9 +8,10 @@ module.exports = class videolink extends Plugin {
         }));
     }
 
-    videolink(args) {
-        let channelID = input;
-        let guildID = channelID.guild_id;
-		let msg = "https://canary.discordapp.com/channels${guildID !== null ? `/${guildID}` : /${channelID}" ;
-        return msg
+    videolink(channel) {
+        let guild = channel.guild_id;
+        let msg = "https://canary.discordapp.com/channels/${guild !== null ? `/${guild}` : /${channel}";
+        return msg;
     }
+};
+

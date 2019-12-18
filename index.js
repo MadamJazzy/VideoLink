@@ -21,20 +21,11 @@ module.exports = class VideoLink extends Plugin {
             async(x) => {
                 const channelID = (x === null) ? channelID = `${VC()}` : channelID = `${input}`;
                 const channel = getChannel(channelID);
-                if (channel.guild_id) {
-                    const guild = getGuild(channel.guild_id);
-                    return {
-                        send: false,
-                        result: ('https://canary.discordapp.com/channels/' + guild.id + "/" + channelID)
+                const link = (channel.guild.id) ? ('https://canary.discordapp.com/channels/' + guild.id + "/" + channelID)
+                    : "Oops, Something isn't quite right, I was not able to find that Channel ID or you don't " +
+                    "have permissions to access that channel!";
+                return {send: false, result: link}
                     }
-                } else { // no guild_id, so channel must be DM
-                    return {
-                        send: false,
-                        result: "Oops, Something isn't quite right, I was not able to find that Channel ID or you don't " +
-                            "have permissions to access that channel!"
-                    }
-                }
-            }
         )
     }
 };

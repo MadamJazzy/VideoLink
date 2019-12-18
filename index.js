@@ -16,7 +16,8 @@ module.exports = class VideoLink extends Plugin {
             "Generate a Video link for any Voice Channel ID.",
             "{c}",
             //code
-            async(channelID) => {
+            async(input) => {
+                let channelID = Number(input);
                 const channel = getChannel(channelID);
                 if (channel.guild_id) {
                     const guild = getGuild(channelID.guild_id);

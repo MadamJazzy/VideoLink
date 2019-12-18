@@ -10,14 +10,16 @@ module.exports = class VideoLink extends Plugin {
     async startPlugin() {
         const getGuild = (await getModule(["getGuild"])).getGuild;
         const getChannel = (await getModule(["getChannel"])).getChannel;
+        const VC = (await getModule(["getVoiceChannelId"])).getVoiceChannelId;
+        var channelID = '';
         this.registerCommand(
             "videolink",
             ["vidlink"],
             "Generate a Video link for any Voice Channel ID.",
             "{c}",
             //code
-            async(input) => {
-                let channelID = '' + input;
+            async(x) => {
+                const channelID = (x === null) ? channelID = `${VC()}` : channelID = `${input}`;
                 const channel = getChannel(channelID);
                 if (channel.guild_id) {
                     const guild = getGuild(channel.guild_id);

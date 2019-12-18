@@ -23,7 +23,7 @@ module.exports = class VideoLink extends Plugin {
                     const guild = getGuild(channel.guild_id);
                     return {
                         send: false,
-                        result: ('https://canary.discordapp.com/' + guild.id + "/" + channelID)
+                        result: ('https://canary.discordapp.com/channels/' + guild.id + "/" + channelID)
                     }
                 } else { // no guild_id, so channel must be DM
                     return {

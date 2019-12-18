@@ -2,18 +2,31 @@ const {Plugin} = require("powercord/entities");
 const webpack = require("powercord/webpack");
 const {getModule} = webpack;
 
-module.exports = class videolink extends Plugin {
-    startPlugin() {
-        this.registerCommand("videolink", [], "Video Link Generator", "{c} [channelID]", (args) => ({
-            send: false,
-            result: this.videolink(args)
-        }));
+module.exports = class VideoLink extends Plugin {
+    constructor() {
+        super()
     }
 
-    async videolink(channel) {
+    async startPlugin() {
         const getGuild = (await getModule(["getGuild"])).getGuild;
-        let guild = getGuild(channel.guild_id);
-        let msg = ("https://canary.discordapp.com/channels/" + guild + "/" + channel);
-        return msg;
+        const getChannel = (await getModule(["getChannel"])).getChannel;
+        this.registerCommand("videolink", "Generate a Video link for any Voice Channel ID", {c},
+        //code
+        async(channelID) => {
+            const channel = getChannel(channelID);
+            if (channel.guild_id) {
+                const guild = getGuild(channel.guild_id);
+                return {
+                    send: false,
+                    result: ('https://canary.discordapp.com/' + guild + "/" + channelID)
+                }
+            } else { // no guild_id, so channel must be DM
+                return {
+                    send: false,
+                    result: "Oops, Something isn't quite right, I was not able to find that Channel ID or you don't " +
+                        "have permissions to access that channel!"
+                }
+            } }
+        )
     }
 };

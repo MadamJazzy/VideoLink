@@ -10,7 +10,7 @@ module.exports = class videolink extends Plugin {
 
     videolink(channel) {
         let guild = channel.guild_id;
-        let msg = "https://canary.discordapp.com/channels/${guild !== null ? `/${guild}` : /${channel}";
+        let msg = ("https://canary.discordapp.com/channels/" + guild + "/" + channel);
         return msg;
     }
 };

@@ -1,5 +1,6 @@
 const {Plugin} = require("powercord/entities");
 const webpack = require("powercord/webpack");
+const {getModule} = webpack;
 
 module.exports = class videolink extends Plugin {
     startPlugin() {
@@ -9,10 +10,10 @@ module.exports = class videolink extends Plugin {
         }));
     }
 
-    videolink(channel) {
-        let guild = channel.guild_id;
+    async videolink(channel) {
+        const getGuild = (await getModule(["getGuild"])).getGuild;
+        let guild = getGuild(channel.guild_id);
         let msg = ("https://canary.discordapp.com/channels/" + guild + "/" + channel);
         return msg;
     }
 };
-

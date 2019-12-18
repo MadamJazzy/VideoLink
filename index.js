@@ -1,4 +1,5 @@
 const {Plugin} = require("powercord/entities");
+const webpack = require("powercord/webpack");
 
 module.exports = class videolink extends Plugin {
     startPlugin() {

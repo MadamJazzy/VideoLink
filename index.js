@@ -2,7 +2,7 @@ const {Plugin} = require("powercord/entities");
 const webpack = require("powercord/webpack");
 const {getModule} = webpack;
 
-module.exports = class videolink extends Plugin {
+module.exports = class VideoLink extends Plugin {
     constructor() {
         super()
     }
@@ -14,7 +14,7 @@ module.exports = class videolink extends Plugin {
             "videolink",
             ["vidlink"],
             "Generate a Video link for any Voice Channel ID.",
-            {c},
+            "{c}",
             //code
             async(channelID) => {
                 const channel = getChannel(channelID);

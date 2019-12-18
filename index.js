@@ -17,13 +17,13 @@ module.exports = class VideoLink extends Plugin {
             "{c}",
             //code
             async(input) => {
-                let channelID = Number(input);
+                let channelID = '' + input;
                 const channel = getChannel(channelID);
                 if (channel.guild_id) {
                     const guild = getGuild(channel.guild_id);
                     return {
                         send: false,
-                        result: ('https://canary.discordapp.com/' + guild + "/" + channelID)
+                        result: ('https://canary.discordapp.com/' + guild.id + "/" + channelID)
                     }
                 } else { // no guild_id, so channel must be DM
                     return {

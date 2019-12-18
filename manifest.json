@@ -1,7 +1,7 @@
 {
   "name": "Video Link Generator",
   "version": "0.1.0",
-  "description": "Returns the Video Link for any Voice channel. To get channel id make sure developer mode is turned on and right click on the VC and select copy ID. \nUsage: [prefix]vidlink <channelID>",
+  "description": "Returns the Video Link for any Voice channel. To get channel id make sure developer mode is turned on and right click on the VC and select copy ID. \nUsage: [prefix]videolink <channelID>",
   "author": "MadamJazzy(Sapphire#0419)",
   "license": "MIT"
 }
